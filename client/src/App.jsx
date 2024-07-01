@@ -13,10 +13,9 @@ function App() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    if(username == '' || password == ''){
-      setErrorMessage("Username and Password is required!")
+    if(username === '' || password === ''){
+      setErrorMessage("Username and Password is required!");
       setShowMessage(true);
- 
     }
     else {
       const response = await login(username, password);
@@ -24,45 +23,117 @@ function App() {
       if(response) {
         navigate('/inventory');
       }
-
-      else{
-        setErrorMessage('Inavalid username or password!');
+      else {
+        setErrorMessage('Invalid username or password!');
       }
       setShowMessage(true);
     }
   }
+
   return (
     <>
-    <div className="w-screen h-screen bg-pink-300 p-5 flex justify-center items-center">
-      <div className="border border-gray-100 bg-pink-700 m-5 p-5 rounded w-[400px] h-[500px]">
-        <div className="pb-2 text-3xl text-center text-white">LOGIN</div>
+    <div style={{ 
+      width: '100vw', 
+      height: '100vh', 
+      backgroundColor: '#ffe4e1', 
+      padding: '5px', 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center'
+    }}>
+      <div style={{ 
+        border: '1px solid #ffd1dc', 
+        backgroundColor: '#fff0f5', 
+        margin: '5px', 
+        padding: '20px', 
+        borderRadius: '15px', 
+        width: '400px', 
+        height: '500px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
+      }}>
+        <div style={{ 
+          paddingBottom: '10px', 
+          fontSize: '30px', 
+          textAlign: 'center', 
+          color: '#ff69b4', 
+          fontFamily: 'cursive'
+        }}>LOGIN</div>
         {
-          showMessage &&
-          (
-            <div className="m-2 bg-transparent bg-red-200 text-red-700 text-center ">
+          showMessage && (
+            <div style={{ 
+              margin: '10px', 
+              backgroundColor: '#ffb6c1', 
+              color: '#b22222', 
+              textAlign: 'center',
+              borderRadius: '5px',
+              padding: '10px'
+            }}>
               { errorMessage }
             </div>
           )
-         
         }
-      
-        <div className="flex gap-5 m-5 justify-center">
-          <div className="text-2xl text-white">Username:</div>
-          <input value={username} onChange={(e) => setUsername(e.target.value)} className="rounded border border-gray-400" type="text" />
+        <div style={{ 
+          display: 'flex', 
+          gap: '5px', 
+          margin: '20px', 
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <div style={{ fontSize: '20px', color: '#ff69b4' }}>Username:</div>
+          <input 
+            value={username} 
+            onChange={(e) => setUsername(e.target.value)} 
+            style={{ 
+              borderRadius: '10px', 
+              border: '1px solid #ff69b4', 
+              padding: '10px', 
+              color: '#ff69b4' 
+            }} 
+            type="text" 
+          />
         </div>
-
-        <div className="flex gap-5 m-5 justify-center">
-          <div className="text-2xl text-white">Password:</div>
-          <input value={password} onChange={(e) => setPassword(e.target.value)} className="rounded border border-gray-400" type="password" />
+        <div style={{ 
+          display: 'flex', 
+          gap: '5px', 
+          margin: '20px', 
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <div style={{ fontSize: '20px', color: '#ff69b4' }}>Password:</div>
+          <input 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            style={{ 
+              borderRadius: '10px', 
+              border: '1px solid #ff69b4', 
+              padding: '10px', 
+              color: '#ff69b4' 
+            }} 
+            type="password" 
+          />
         </div>
-
-        <div className="flex justify-end">
-          <button onClick={handleLogin} className="bg-green-700 text-white p-3 rounded hover:bg-green-300 hover:cursor-pointer">LOGIN</button>
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <button 
+            onClick={handleLogin} 
+            style={{ 
+              backgroundColor: '#ff69b4', 
+              color: 'white', 
+              padding: '10px', 
+              borderRadius: '10px', 
+              cursor: 'pointer',
+              transition: 'background-color 0.3s',
+              border: 'none'
+            }}
+            onMouseOver={(e) => e.target.style.backgroundColor = '#ff85c0'}
+            onMouseOut={(e) => e.target.style.backgroundColor = '#ff69b4'}
+          >
+            LOGIN
+          </button>
         </div>
       </div>
     </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
